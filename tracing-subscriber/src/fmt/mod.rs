@@ -1172,12 +1172,14 @@ impl<N, E, F, W> CollectorBuilder<N, E, F, W> {
     }
 }
 
-/// Install a global tracing collector that listens for events and
-/// filters based on the value of the [`RUST_LOG` environment variable],
+/// Install a global tracing collector that listens for events,
 /// if one is not already set.
 ///
 /// If the `tracing-log` feature is enabled, this will also install
 /// the [`LogTracer`] to convert `log` records into `tracing` `Event`s.
+///
+/// If the 'env-filter' feature is enabled, this will also install filtering
+/// based on the value of [`RUST_LOG` environment variable].
 ///
 /// This is shorthand for
 ///
@@ -1207,11 +1209,13 @@ pub fn try_init() -> Result<(), Box<dyn Error + Send + Sync + 'static>> {
     builder.try_init()
 }
 
-/// Install a global tracing collector that listens for events and
-/// filters based on the value of the [`RUST_LOG` environment variable].
+/// Install a global tracing collector that listens for events.
 ///
 /// If the `tracing-log` feature is enabled, this will also install
 /// the LogTracer to convert `Log` records into `tracing` `Event`s.
+///
+/// If the 'env-filter' feature is enabled, this will also install filtering
+/// based on the value of [`RUST_LOG` environment variable].
 ///
 /// This is shorthand for
 ///
